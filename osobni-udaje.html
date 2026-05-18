@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zásady zpracování osobních údajů · Ojetina bez průšvihu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..900,0..100&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #EDE6D6;
+  --bg-soft: #F4EFE2;
+  --ink: #1A1815;
+  --ink-soft: #6B645B;
+  --accent: #B8881A;
+  --accent-dark: #946D14;
+  --hair: #D4CCBA;
+  --white: #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+  background: var(--bg);
+}
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3, h4 { font-family: 'Fraunces', serif; color: var(--ink); }
+
+/* NAV */
+.nav { padding: 24px 0; border-bottom: 1px solid var(--hair); background: var(--bg); }
+.nav-inner { display: flex; justify-content: space-between; align-items: center; }
+.nav-brand {
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px;
+  color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-brand .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+.nav-links { display: flex; gap: 28px; list-style: none; font-size: 14px; font-weight: 500; }
+.nav-links a { color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+
+/* DOCUMENT HEADER */
+.doc-header {
+  padding: 64px 0 48px;
+  text-align: center;
+  border-bottom: 1px solid var(--hair);
+}
+.doc-header .label-pill {
+  display: inline-block;
+  border: 1.2px solid var(--accent);
+  color: var(--accent);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 999px;
+  margin-bottom: 24px;
+}
+.doc-header h1 {
+  font-weight: 700; font-style: italic;
+  font-size: clamp(36px, 5.5vw, 56px);
+  line-height: 1.05; letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.doc-header .subtitle {
+  font-family: 'Fraunces', serif;
+  font-weight: 600; font-size: clamp(18px, 2.2vw, 22px);
+  color: var(--accent); margin-bottom: 16px;
+}
+.doc-header .meta {
+  font-size: 16px; color: var(--ink);
+  max-width: 640px; margin: 0 auto 24px;
+}
+.doc-header .effective {
+  padding-top: 16px; border-top: 2px solid var(--accent);
+  display: inline-block;
+  font-size: 14px; font-weight: 600;
+}
+
+/* DOC BODY */
+.doc-body { padding: 64px 0 80px; }
+.doc-section { margin-bottom: 48px; }
+.doc-section .sec-head {
+  display: flex; gap: 20px; align-items: baseline;
+  margin-bottom: 16px;
+}
+.doc-section .sec-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 800; font-size: clamp(32px, 4vw, 40px);
+  color: var(--accent);
+  line-height: 1; letter-spacing: -0.02em;
+  flex-shrink: 0; min-width: 50px;
+}
+.doc-section h2 {
+  font-weight: 700; font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.2; letter-spacing: -0.01em;
+}
+.doc-section h4 {
+  font-weight: 700; font-size: 17px;
+  margin: 16px 0 6px 0;
+}
+.doc-section .legal-base {
+  font-style: italic; font-size: 14px;
+  color: var(--ink-soft); margin-bottom: 16px;
+}
+.doc-section p { margin-bottom: 12px; }
+.doc-section p:last-child { margin-bottom: 0; }
+.doc-section ul { margin: 12px 0 16px 0; padding: 0; list-style: none; }
+.doc-section ul.cols-2 { columns: 2; column-gap: 32px; }
+.doc-section ul li {
+  padding: 4px 0 4px 24px; position: relative;
+  break-inside: avoid;
+}
+.doc-section ul li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--accent); font-weight: 700;
+}
+@media (max-width: 640px) {
+  .doc-section ul.cols-2 { columns: 1; }
+}
+
+.info-box {
+  background: rgba(184, 136, 26, 0.06);
+  border-left: 3px solid var(--accent);
+  padding: 16px 24px; margin: 16px 0;
+  border-radius: 0 6px 6px 0;
+  line-height: 1.55;
+}
+.info-box .company-name { font-weight: 700; font-size: 18px; margin-bottom: 8px; }
+.info-box .details { color: var(--ink); }
+
+.callout {
+  background: rgba(184, 136, 26, 0.08);
+  border-radius: 6px;
+  padding: 16px 24px; margin: 16px 0;
+}
+.callout .label {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 8px;
+}
+.callout .text {
+  font-family: 'Fraunces', serif;
+  font-style: italic; font-weight: 500;
+  font-size: 18px; line-height: 1.4;
+}
+
+/* FOOTER */
+.footer { background: var(--ink); color: var(--bg); padding: 64px 0 32px; }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand .name {
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px;
+  margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+}
+.footer-brand .name .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+.footer-brand p { font-size: 14px; color: rgba(237, 230, 214, 0.7); max-width: 360px; margin-top: 8px; }
+.footer-brand .footer-contact { margin-top: 16px; color: rgba(237, 230, 214, 0.85); }
+.footer-brand .footer-contact a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.footer-brand .footer-contact a:hover { color: var(--bg); }
+.footer h4 {
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+.footer ul { list-style: none; }
+.footer ul li { font-size: 14px; margin-bottom: 8px; }
+.footer ul li a {
+  color: rgba(237, 230, 214, 0.85); text-decoration: none; transition: color 0.2s;
+}
+.footer ul li a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid rgba(212, 204, 186, 0.2);
+  padding-top: 24px; font-size: 13px;
+  color: rgba(237, 230, 214, 0.6);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="dot"></span> Ojetina bez průšvihu</a>
+      <ul class="nav-links">
+        <li><a href="index.html#problem">Proč to řešit</a></li>
+        <li><a href="index.html#produkty">Balíčky</a></li>
+        <li><a href="index.html#faq">Otázky</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== DOCUMENT HEADER ========== -->
+<header class="doc-header">
+  <div class="container-narrow">
+    <span class="label-pill">Dokument</span>
+    <h1>Zásady zpracování osobních údajů</h1>
+    <p class="subtitle">Zoobanda s.r.o.</p>
+    <p class="meta">Tyto zásady vysvětlují, jak společnost Zoobanda s.r.o. zpracovává osobní údaje zákazníků, zájemců a návštěvníků při prodeji digitálních produktů pod označením Ojetina bez průšvihu.</p>
+    <p class="effective">Platné od 1. 3. 2026</p>
+  </div>
+</header>
+
+<!-- ========== DOCUMENT BODY ========== -->
+<main class="doc-body">
+  <div class="container-narrow">
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">1</span><h2>Úvodní ustanovení</h2></div>
+      <p>Tyto zásady zpracování osobních údajů vysvětlují, jak společnost Zoobanda s.r.o. zpracovává osobní údaje zákazníků, zájemců a návštěvníků při prodeji digitálních produktů pod označením Ojetina bez průšvihu.</p>
+      <p>Osobní údaje zpracováváme zejména v souvislosti s:</p>
+      <ul class="cols-2">
+        <li>objednávkou digitálních produktů,</li>
+        <li>dodáním PDF materiálů,</li>
+        <li>vystavením daňových dokladů,</li>
+        <li>zákaznickou podporou,</li>
+        <li>vyřízením reklamací,</li>
+        <li>zasíláním obchodních sdělení a marketingových e-mailů,</li>
+        <li>poskytováním zdarma PDF materiálů výměnou za e-mail.</li>
+      </ul>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">2</span><h2>Správce osobních údajů</h2></div>
+      <p>Správcem osobních údajů je:</p>
+      <div class="info-box">
+        <p class="company-name">Zoobanda s.r.o.</p>
+        <p class="details">
+          IČO: 09542779<br>
+          DIČ: CZ09542779<br>
+          Sídlo: Tolarova 886/9, 664 44 Ořechov<br>
+          E-mail: d.balascak@gmail.com
+        </p>
+      </div>
+      <p>Společnost Zoobanda s.r.o. je plátcem DPH.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">3</span><h2>Jaké osobní údaje zpracováváme</h2></div>
+      <p>Zpracováváme pouze údaje, které jsou potřebné pro objednávku, dodání produktu, fakturaci, komunikaci nebo marketing. Může jít zejména o tyto údaje:</p>
+      <ul class="cols-2">
+        <li>jméno,</li>
+        <li>příjmení,</li>
+        <li>e-mailová adresa,</li>
+        <li>fakturační údaje,</li>
+        <li>název firmy,</li>
+        <li>IČO,</li>
+        <li>DIČ,</li>
+        <li>údaje o objednaném produktu,</li>
+        <li>údaje o platbě,</li>
+        <li>číslo objednávky,</li>
+        <li>číslo daňového dokladu,</li>
+        <li>komunikace se zákazníkem,</li>
+        <li>informace o udělených souhlasech,</li>
+        <li>technické údaje související s doručením digitálního obsahu.</li>
+      </ul>
+      <div class="callout">
+        <p class="label">Poznámka</p>
+        <p class="text">Pokud nakupujete jako běžný spotřebitel, firemní údaje vyplňovat nemusíte.</p>
+      </div>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">4</span><h2>Pro jaké účely osobní údaje zpracováváme</h2></div>
+
+      <h4>a) Vyřízení objednávky a dodání digitálního produktu</h4>
+      <p>Osobní údaje používáme k tomu, abychom mohli přijmout objednávku, zpracovat platbu, doručit zakoupený PDF produkt, zaslat odkaz ke stažení a komunikovat ohledně objednávky.</p>
+      <p class="legal-base">Právní základ: plnění smlouvy.</p>
+
+      <h4>b) Fakturace a plnění zákonných povinností</h4>
+      <p>Osobní údaje používáme k vystavení daňových dokladů a plnění účetních, daňových a dalších zákonných povinností.</p>
+      <p class="legal-base">Právní základ: plnění zákonné povinnosti.</p>
+
+      <h4>c) Zákaznická podpora a reklamace</h4>
+      <p>Osobní údaje můžeme zpracovávat při řešení dotazů, technických problémů, reklamací nebo žádostí souvisejících s objednávkou.</p>
+      <p class="legal-base">Právní základ: plnění smlouvy, případně oprávněný zájem na řádném vyřízení požadavku.</p>
+
+      <h4>d) Zasílání obchodních sdělení zákazníkům</h4>
+      <p>Pokud u nás zakoupíte produkt, můžeme vám zasílat obchodní sdělení týkající se podobných produktů — dalších taháků, checklistů, návodů nebo souvisejícího obsahu k nákupu a prodeji aut. Každý e-mail bude obsahovat možnost odhlášení.</p>
+      <p class="legal-base">Právní základ: oprávněný zájem na přímém marketingu vůči stávajícím zákazníkům.</p>
+
+      <h4>e) Zasílání newsletteru a marketingových e-mailů na základě souhlasu</h4>
+      <p>Pokud si stáhnete zdarma PDF, přihlásíte se k odběru novinek nebo samostatně zaškrtnete souhlas, můžeme vám zasílat praktické tipy ke koupi ojetého auta, informace o produktech, nabídky placených balíčků, upozornění na nové materiály a prodejní e-maily.</p>
+      <p>Souhlas můžete kdykoli odvolat kliknutím na odhlašovací odkaz v e-mailu nebo zasláním žádosti na <strong>d.balascak@gmail.com</strong>. Odvoláním souhlasu není dotčena zákonnost zpracování před jeho odvoláním.</p>
+      <p class="legal-base">Právní základ: souhlas.</p>
+
+      <h4>f) Zlepšování produktů a služeb</h4>
+      <p>Vyhodnocujeme základní údaje o objednávkách a zájmu o produkty, abychom mohli zlepšovat obsah, nabídku a komunikaci.</p>
+      <p class="legal-base">Právní základ: oprávněný zájem na rozvoji produktů a služeb.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">5</span><h2>Lead magnet zdarma za e-mail</h2></div>
+      <p>Pokud si stáhnete zdarma PDF (například <em>7 vět v inzerátu ojetiny, u kterých byste měli zbystřit</em>), zpracujeme váš e-mail za účelem:</p>
+      <ul>
+        <li>doručení zdarma PDF,</li>
+        <li>navazující komunikace,</li>
+        <li>zasílání praktických tipů a obchodních sdělení, pokud s tím souhlasíte.</li>
+      </ul>
+      <p>Pro zasílání marketingových e-mailů doporučujeme samostatný souhlas, který nebude předem zaškrtnutý.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">6</span><h2>Doba uchování osobních údajů</h2></div>
+      <p>Osobní údaje uchováváme pouze po dobu nezbytnou pro daný účel.</p>
+      <h4>Objednávky a fakturace</h4>
+      <p>Údaje související s objednávkou a daňovými doklady uchováváme po dobu vyžadovanou právními předpisy, zejména účetními a daňovými.</p>
+      <h4>Zákaznická komunikace</h4>
+      <p>Komunikaci se zákazníkem uchováváme po dobu potřebnou k vyřízení požadavku a případné ochraně právních nároků.</p>
+      <h4>Marketingový souhlas</h4>
+      <p>Údaje zpracovávané na základě souhlasu pro marketing uchováváme do odvolání souhlasu, nejdéle však po dobu, po kterou je souhlas relevantní pro daný účel.</p>
+      <h4>Oprávněný zájem</h4>
+      <p>Údaje zpracovávané na základě oprávněného zájmu uchováváme po dobu trvání tohoto oprávněného zájmu, pokud proti zpracování nevznesete námitku.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">7</span><h2>Kdo má k osobním údajům přístup</h2></div>
+      <p>Osobní údaje mohou být zpřístupněny pouze osobám a subjektům, které nám pomáhají zajistit provoz prodeje, doručení produktu, fakturaci, e-mailing nebo technické fungování služeb. Může jít zejména o:</p>
+      <ul class="cols-2">
+        <li>provozovatele prodejního systému SimpleShop,</li>
+        <li>poskytovatele platebních služeb,</li>
+        <li>poskytovatele e-mailingového nástroje,</li>
+        <li>poskytovatele účetního softwaru,</li>
+        <li>účetní nebo daňové poradce,</li>
+        <li>poskytovatele IT služeb,</li>
+        <li>osoby zajišťující správu a technickou podporu.</li>
+      </ul>
+      <p>S těmito subjekty spolupracujeme pouze v rozsahu nezbytném pro zajištění konkrétní služby.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">8</span><h2>SimpleShop</h2></div>
+      <p>Pro prodej digitálních produktů používáme prodejní systém SimpleShop. Prostřednictvím SimpleShopu může docházet zejména ke zpracování:</p>
+      <ul class="cols-2">
+        <li>objednávkových údajů,</li>
+        <li>platebních údajů,</li>
+        <li>fakturačních údajů,</li>
+        <li>údajů potřebných k doručení digitálního produktu,</li>
+        <li>informací o udělených souhlasech.</li>
+      </ul>
+      <p>SimpleShop vystupuje podle povahy zpracování jako zpracovatel nebo samostatný správce v rozsahu, který odpovídá jeho obchodním a technickým podmínkám.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">9</span><h2>Platební brány a bankovní převod</h2></div>
+      <p>Pokud je při objednávce využita platební brána, mohou být osobní údaje zpracovávány také poskytovatelem platebních služeb.</p>
+      <p>Při platbě bankovním převodem dochází ke zpracování údajů nezbytných pro spárování platby — zejména čísla objednávky, variabilního symbolu, částky a údajů spojených s bankovní transakcí.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">10</span><h2>E-mailingové nástroje</h2></div>
+      <p>Pro zasílání e-mailů, newsletterů, automatických sekvencí nebo obchodních sdělení můžeme využívat e-mailingový nástroj. Pro tento účel mohou být zpracovávány zejména:</p>
+      <ul class="cols-2">
+        <li>e-mailová adresa,</li>
+        <li>jméno,</li>
+        <li>informace o souhlasu,</li>
+        <li>informace o stažení zdarma PDF,</li>
+        <li>informace o nákupu produktu,</li>
+        <li>informace o otevření nebo prokliknutí e-mailu, pokud to nástroj umožňuje.</li>
+      </ul>
+      <p>Každý marketingový e-mail bude obsahovat možnost odhlášení.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">11</span><h2>Zasílání obchodních sdělení</h2></div>
+      <p>Obchodní sdělení zasíláme pouze v souladu s právními předpisy. Mohou být zasílána zejména:</p>
+      <ul>
+        <li>zákazníkům v souvislosti s obdobnými produkty nebo službami,</li>
+        <li>osobám, které k tomu udělily souhlas,</li>
+        <li>zájemcům, kteří si stáhli zdarma PDF a souhlasili s navazující marketingovou komunikací.</li>
+      </ul>
+      <p>Z každého obchodního sdělení se můžete kdykoli odhlásit.</p>
+      <p>ÚOOÚ ve svých materiálech k obchodním sdělením vysvětluje, že za obchodní sdělení se považují zprávy propagující činnost podnikatele. Marketingové e-maily proto označujeme a nastavujeme tak, aby bylo možné se z nich odhlásit.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">12</span><h2>Cookies a technické nástroje</h2></div>
+      <p>Pokud bude prodejní stránka, objednávkový formulář nebo související stránka používat cookies nebo obdobné technologie, může docházet ke zpracování technických údajů. Může jít například o:</p>
+      <ul class="cols-2">
+        <li>IP adresu,</li>
+        <li>typ zařízení,</li>
+        <li>typ prohlížeče,</li>
+        <li>informace o návštěvě stránky,</li>
+        <li>údaje potřebné pro fungování formuláře,</li>
+        <li>případně marketingové nebo analytické cookies.</li>
+      </ul>
+      <p>Nezbytné cookies mohou být používány pro fungování webu nebo objednávkového formuláře.</p>
+      <p>Analytické nebo marketingové cookies by měly být používány pouze v souladu s nastavením cookie lišty a příslušnými souhlasy, pokud jsou vyžadovány.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">13</span><h2>Předávání údajů mimo EU</h2></div>
+      <p>Osobní údaje se snažíme zpracovávat především v rámci Evropské unie.</p>
+      <p>Pokud by některý z používaných nástrojů předával osobní údaje mimo EU, bude takové předání probíhat pouze za podmínek stanovených právními předpisy — například na základě standardních smluvních doložek nebo jiného vhodného mechanismu.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">14</span><h2>Vaše práva</h2></div>
+      <p>V souvislosti se zpracováním osobních údajů máte zejména tato práva:</p>
+      <ul class="cols-2">
+        <li>právo na přístup k osobním údajům,</li>
+        <li>právo na opravu nepřesných údajů,</li>
+        <li>právo na výmaz,</li>
+        <li>právo na omezení zpracování,</li>
+        <li>právo na přenositelnost údajů,</li>
+        <li>právo vznést námitku proti zpracování,</li>
+        <li>právo odvolat souhlas, pokud je zpracování založeno na souhlasu,</li>
+        <li>právo podat stížnost u dozorového úřadu.</li>
+      </ul>
+      <p>Svá práva můžete uplatnit na e-mailu <strong>d.balascak@gmail.com</strong>.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">15</span><h2>Právo podat stížnost</h2></div>
+      <p>Pokud se domníváte, že s vašimi osobními údaji nakládáme v rozporu s právními předpisy, máte právo obrátit se na Úřad pro ochranu osobních údajů.</p>
+      <div class="info-box">
+        <p class="company-name">Úřad pro ochranu osobních údajů</p>
+        <p class="details">
+          Pplk. Sochora 27<br>
+          170 00 Praha 7<br>
+          Web: www.uoou.cz
+        </p>
+      </div>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">16</span><h2>Zabezpečení osobních údajů</h2></div>
+      <p>Osobní údaje chráníme pomocí přiměřených technických a organizačních opatření. Přístup k osobním údajům mají pouze osoby, které je potřebují pro plnění svých úkolů — například pro vyřízení objednávky, fakturaci, zákaznickou podporu nebo správu e-mailingového systému.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">17</span><h2>Dobrovolnost poskytnutí údajů</h2></div>
+      <p>Poskytnutí osobních údajů pro účely objednávky je nezbytné pro uzavření a plnění smlouvy.</p>
+      <p>Bez poskytnutí základních údajů — zejména e-mailu, jména a příjmení — není možné objednávku vyřídit a digitální produkt doručit.</p>
+      <p>Poskytnutí údajů pro marketingové účely je dobrovolné. Souhlas s marketingem není podmínkou nákupu produktu.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">18</span><h2>Změny zásad zpracování osobních údajů</h2></div>
+      <p>Tyto zásady můžeme čas od času aktualizovat.</p>
+      <p>Pro zákazníka platí znění účinné v době provedení objednávky nebo v době udělení souhlasu.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">19</span><h2>Platnost</h2></div>
+      <p>Tyto zásady zpracování osobních údajů jsou platné ode dne <strong>1. 3. 2026</strong>.</p>
+    </div>
+
+    <div class="callout" style="margin-top: 48px;">
+      <p class="label">Kontakt</p>
+      <p class="text">Zoobanda s.r.o. &nbsp;·&nbsp; IČO: 09542779 &nbsp;·&nbsp; d.balascak@gmail.com</p>
+    </div>
+
+  </div>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="name"><span class="dot"></span> Ojetina bez průšvihu</div>
+        <p>Praktické taháky a návody pro bezpečnější koupi ojetého auta v cenovém pásmu 100–500 tisíc Kč.</p>
+        <p class="footer-contact">Kontakt: <a href="mailto:d.balascak@gmail.com">d.balascak@gmail.com</a></p>
+      </div>
+      <div>
+        <h4>Balíčky</h4>
+        <ul>
+          <li><a href="index.html#produkty">Rychlý tahák — 199 Kč</a></li>
+          <li><a href="index.html#produkty">Tahák + jednání — 349 Kč</a></li>
+          <li><a href="index.html#produkty">Kompletní balíček — 490 Kč</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Informace</h4>
+        <ul>
+          <li><a href="obchodni-podminky.html">Obchodní podmínky</a></li>
+          <li><a href="osobni-udaje.html">Zpracování osobních údajů</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Zoobanda s.r.o. · IČO 09542779 · DIČ CZ09542779</span>
+      <span>Tolarova 886/9, 664 44 Ořechov</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

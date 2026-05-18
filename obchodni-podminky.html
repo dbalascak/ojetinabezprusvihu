@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obchodní podmínky · Ojetina bez průšvihu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..900,0..100&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #EDE6D6;
+  --bg-soft: #F4EFE2;
+  --ink: #1A1815;
+  --ink-soft: #6B645B;
+  --accent: #B8881A;
+  --accent-dark: #946D14;
+  --hair: #D4CCBA;
+  --white: #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+  background: var(--bg);
+}
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3 { font-family: 'Fraunces', serif; color: var(--ink); }
+
+/* NAV */
+.nav { padding: 24px 0; border-bottom: 1px solid var(--hair); background: var(--bg); }
+.nav-inner { display: flex; justify-content: space-between; align-items: center; }
+.nav-brand {
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px;
+  color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-brand .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+.nav-links { display: flex; gap: 28px; list-style: none; font-size: 14px; font-weight: 500; }
+.nav-links a { color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+
+/* DOCUMENT HEADER */
+.doc-header {
+  padding: 64px 0 48px;
+  text-align: center;
+  border-bottom: 1px solid var(--hair);
+}
+.doc-header .label-pill {
+  display: inline-block;
+  border: 1.2px solid var(--accent);
+  color: var(--accent);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 999px;
+  margin-bottom: 24px;
+}
+.doc-header h1 {
+  font-weight: 700; font-style: italic;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.05; letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.doc-header .subtitle {
+  font-family: 'Fraunces', serif;
+  font-weight: 600; font-size: clamp(18px, 2.2vw, 22px);
+  color: var(--accent); margin-bottom: 16px;
+}
+.doc-header .meta {
+  font-size: 16px; color: var(--ink);
+  max-width: 640px; margin: 0 auto 24px;
+}
+.doc-header .effective {
+  padding-top: 16px; border-top: 2px solid var(--accent);
+  display: inline-block;
+  font-size: 14px; font-weight: 600;
+}
+
+/* DOC BODY */
+.doc-body { padding: 64px 0 80px; }
+.doc-section { margin-bottom: 48px; }
+.doc-section .sec-head {
+  display: flex; gap: 20px; align-items: baseline;
+  margin-bottom: 16px;
+}
+.doc-section .sec-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 800; font-size: clamp(32px, 4vw, 40px);
+  color: var(--accent);
+  line-height: 1; letter-spacing: -0.02em;
+  flex-shrink: 0; min-width: 50px;
+}
+.doc-section h2 {
+  font-weight: 700; font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.2; letter-spacing: -0.01em;
+}
+.doc-section p { margin-bottom: 12px; }
+.doc-section p:last-child { margin-bottom: 0; }
+.doc-section ul { margin: 12px 0 16px 0; padding: 0; list-style: none; }
+.doc-section ul li {
+  padding: 4px 0 4px 24px; position: relative;
+}
+.doc-section ul li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--accent); font-weight: 700;
+}
+
+.info-box {
+  background: rgba(184, 136, 26, 0.06);
+  border-left: 3px solid var(--accent);
+  padding: 16px 24px; margin: 16px 0;
+  border-radius: 0 6px 6px 0;
+  line-height: 1.55;
+}
+.info-box .company-name { font-weight: 700; font-size: 18px; margin-bottom: 8px; }
+.info-box .details { color: var(--ink); }
+
+.callout {
+  background: rgba(184, 136, 26, 0.08);
+  border-radius: 6px;
+  padding: 16px 24px; margin: 16px 0;
+}
+.callout .label {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 8px;
+}
+.callout .text {
+  font-family: 'Fraunces', serif;
+  font-style: italic; font-weight: 500;
+  font-size: 18px; line-height: 1.4;
+}
+
+/* FOOTER */
+.footer { background: var(--ink); color: var(--bg); padding: 64px 0 32px; }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand .name {
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px;
+  margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+}
+.footer-brand .name .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+.footer-brand p { font-size: 14px; color: rgba(237, 230, 214, 0.7); max-width: 360px; margin-top: 8px; }
+.footer-brand .footer-contact { margin-top: 16px; color: rgba(237, 230, 214, 0.85); }
+.footer-brand .footer-contact a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.footer-brand .footer-contact a:hover { color: var(--bg); }
+.footer h4 {
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+.footer ul { list-style: none; }
+.footer ul li { font-size: 14px; margin-bottom: 8px; }
+.footer ul li a {
+  color: rgba(237, 230, 214, 0.85); text-decoration: none; transition: color 0.2s;
+}
+.footer ul li a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid rgba(212, 204, 186, 0.2);
+  padding-top: 24px; font-size: 13px;
+  color: rgba(237, 230, 214, 0.6);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="dot"></span> Ojetina bez průšvihu</a>
+      <ul class="nav-links">
+        <li><a href="index.html#problem">Proč to řešit</a></li>
+        <li><a href="index.html#produkty">Balíčky</a></li>
+        <li><a href="index.html#faq">Otázky</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== DOCUMENT HEADER ========== -->
+<header class="doc-header">
+  <div class="container-narrow">
+    <span class="label-pill">Dokument</span>
+    <h1>Obchodní podmínky</h1>
+    <p class="subtitle">Zoobanda s.r.o.</p>
+    <p class="meta">Tyto obchodní podmínky upravují práva a povinnosti mezi prodávajícím a kupujícím při nákupu digitálních produktů prodávaných pod označením Ojetina bez průšvihu prostřednictvím prodejního formuláře SimpleShop.</p>
+    <p class="effective">Platné od 1. 3. 2026</p>
+  </div>
+</header>
+
+<!-- ========== DOCUMENT BODY ========== -->
+<main class="doc-body">
+  <div class="container-narrow">
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">1</span><h2>Úvodní ustanovení</h2></div>
+      <p>Tyto obchodní podmínky upravují práva a povinnosti mezi prodávajícím a kupujícím při nákupu digitálních produktů prodávaných pod označením Ojetina bez průšvihu prostřednictvím prodejního formuláře SimpleShop.</p>
+      <p>Digitálními produkty se rozumí zejména PDF materiály, taháky, checklisty, návody a další elektronické dokumenty zaměřené na lepší přípravu při koupi ojetého vozidla.</p>
+      <p>Odesláním objednávky kupující potvrzuje, že se s těmito obchodními podmínkami seznámil a souhlasí s nimi.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">2</span><h2>Identifikace prodávajícího</h2></div>
+      <div class="info-box">
+        <p class="company-name">Zoobanda s.r.o.</p>
+        <p class="details">
+          IČO: 09542779<br>
+          DIČ: CZ09542779<br>
+          Sídlo: Tolarova 886/9, 664 44 Ořechov<br>
+          E-mail: d.balascak@gmail.com
+        </p>
+      </div>
+      <p>Prodávající je plátcem DPH. Prodávající prodává digitální produkty prostřednictvím prodejního systému SimpleShop.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">3</span><h2>Produkty</h2></div>
+      <p>Prodávající nabízí digitální produkty ve formátu PDF, zejména:</p>
+      <ul>
+        <li>Ojetina bez průšvihu: Rychlý tahák před prohlídkou</li>
+        <li>Ojetina bez průšvihu: Tahák + příprava na jednání</li>
+        <li>Ojetina bez průšvihu: Kompletní nákupní balíček</li>
+      </ul>
+      <p>Produkty jsou dodávány výhradně elektronicky, zpravidla formou odkazu ke stažení zaslaného na e-mail uvedený kupujícím v objednávce. Produkty nejsou fyzicky zasílány poštou.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">4</span><h2>Charakter produktu a upozornění</h2></div>
+      <p>Digitální produkty slouží jako praktická informační pomůcka při koupi ojetého vozidla.</p>
+      <p>Produkty nenahrazují:</p>
+      <ul>
+        <li>odbornou technickou kontrolu vozidla,</li>
+        <li>právní poradenství,</li>
+        <li>prověření vozidla specializovanou službou,</li>
+        <li>kontrolu vozidla v autoservisu,</li>
+        <li>individuální posouzení konkrétního případu.</li>
+      </ul>
+      <p>Prodávající negarantuje, že použitím produktů kupující zcela odstraní riziko špatné koupě ojetého vozidla.</p>
+      <p>Cílem produktů je pomoci kupujícímu lépe se připravit, položit vhodné otázky, všimnout si varovných signálů a snížit riziko přehlédnutí důležitých skutečností.</p>
+      <p>Kupující bere na vědomí, že koupě ojetého vozidla je vždy spojena s určitým rizikem a že žádný obecný návod nemůže nahradit individuální posouzení konkrétního vozidla odborníkem.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">5</span><h2>Objednávka</h2></div>
+      <p>Kupující objednává digitální produkt prostřednictvím objednávkového formuláře. V objednávce kupující vyplní zejména:</p>
+      <ul>
+        <li>e-mail,</li>
+        <li>jméno,</li>
+        <li>příjmení,</li>
+        <li>případně firemní údaje, pokud nakupuje na firmu.</li>
+      </ul>
+      <p>Kupující odpovídá za správnost vyplněných údajů, zejména za správnost e-mailové adresy. Na tuto e-mailovou adresu jsou zasílány platební údaje, potvrzení objednávky, daňový doklad a odkaz ke stažení produktu.</p>
+      <p>Odesláním objednávky vzniká kupujícímu povinnost uhradit cenu objednaného produktu.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">6</span><h2>Cena a platební podmínky</h2></div>
+      <p>Ceny produktů jsou uvedeny v českých korunách včetně DPH.</p>
+      <p>Platba probíhá způsoby uvedenými v objednávkovém formuláři, zejména bankovním převodem, případně dalšími platebními metodami, pokud jsou prodávajícím aktivovány.</p>
+      <p>U bankovního převodu je produkt zpřístupněn po připsání platby na účet prodávajícího nebo po potvrzení úhrady platebním systémem.</p>
+      <p>Kupující obdrží platební údaje e-mailem po dokončení objednávky. Daňový doklad je kupujícímu vystaven a zaslán elektronicky, případně zpřístupněn ke stažení prostřednictvím prodejního systému.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">7</span><h2>Dodání digitálního produktu</h2></div>
+      <p>Digitální produkt je kupujícímu dodán elektronicky. Po uhrazení objednávky obdrží kupující e-mail s odkazem ke stažení produktu.</p>
+      <p>Kupující je povinen zkontrolovat také složky Hromadné, Promo akce nebo Spam, pokud e-mail neobdrží do obvyklé doby.</p>
+      <p>V případě technických problémů se stažením produktu může kupující kontaktovat prodávajícího na e-mailu uvedeném v těchto obchodních podmínkách.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">8</span><h2>Zpřístupnění digitálního obsahu a odstoupení od smlouvy</h2></div>
+      <p>Kupující bere na vědomí, že předmětem koupě je digitální obsah, který není dodáván na hmotném nosiči.</p>
+      <p>Pokud kupující při objednávce udělí výslovný souhlas se zpřístupněním digitálního obsahu před uplynutím lhůty 14 dnů pro odstoupení od smlouvy a zároveň bere na vědomí, že tím ztrácí právo na odstoupení od smlouvy, bude mu digitální produkt zpřístupněn po uhrazení objednávky.</p>
+      <p>Po zpřístupnění digitálního obsahu kupující ztrácí právo odstoupit od smlouvy ve 14denní lhůtě. Pokud kupující tento souhlas neudělí, může být dodání digitálního obsahu odloženo až po uplynutí zákonné lhůty pro odstoupení od smlouvy.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">9</span><h2>Doporučené znění souhlasu s okamžitým dodáním digitálního obsahu</h2></div>
+      <p>V objednávkovém formuláři je uveden samostatný povinný checkbox v tomto nebo obdobném znění:</p>
+      <div class="callout">
+        <p class="label">Znění checkboxu</p>
+        <p class="text">Souhlasím s tím, aby mi byl digitální obsah zpřístupněn ihned po uhrazení objednávky, tedy před uplynutím 14denní lhůty pro odstoupení od smlouvy. Beru na vědomí, že zpřístupněním digitálního obsahu ztrácím právo na odstoupení od smlouvy.</p>
+      </div>
+      <p>Tento souhlas není předem zaškrtnutý. Kupující ho aktivně potvrzuje před odesláním objednávky.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">10</span><h2>Reklamace a technické problémy</h2></div>
+      <p>Kupující má právo reklamovat zejména situace, kdy:</p>
+      <ul>
+        <li>mu po zaplacení nebyl zpřístupněn zakoupený produkt,</li>
+        <li>odkaz ke stažení nefunguje,</li>
+        <li>byl mu omylem dodán jiný produkt,</li>
+        <li>soubor je poškozený nebo nejde otevřít.</li>
+      </ul>
+      <p>Reklamaci může kupující zaslat na e-mail prodávajícího. V reklamaci uvede:</p>
+      <ul>
+        <li>jméno a příjmení,</li>
+        <li>e-mail použitý při objednávce,</li>
+        <li>číslo objednávky, pokud ho má k dispozici,</li>
+        <li>popis problému.</li>
+      </ul>
+      <p>Prodávající reklamaci vyřídí bez zbytečného odkladu, nejpozději v zákonné lhůtě. Pokud je reklamace oprávněná, prodávající zpřístupní produkt znovu, zašle nový odkaz ke stažení, případně nabídne jiné vhodné řešení.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">11</span><h2>Omezení odpovědnosti</h2></div>
+      <p>Produkty jsou informační a vzdělávací materiály.</p>
+      <p>Prodávající neodpovídá za rozhodnutí kupujícího při koupi konkrétního vozidla ani za technický, právní nebo historický stav konkrétního vozidla.</p>
+      <p>Prodávající neodpovídá za škodu vzniklou tím, že kupující neprovede odbornou kontrolu vozidla, neověří historii vozidla, nepřečte si smlouvu, neporadí se s odborníkem nebo se rozhodne koupit vozidlo navzdory varovným signálům.</p>
+      <p>Kupující bere na vědomí, že koupě ojetého vozidla je vždy spojena s určitým rizikem a žádný obecný návod nemůže nahradit individuální posouzení konkrétního auta odborníkem.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">12</span><h2>Licence a užití digitálního produktu</h2></div>
+      <p>Zakoupený digitální produkt je určen pouze pro osobní potřebu kupujícího.</p>
+      <p>Kupující není oprávněn produkt dále prodávat, veřejně šířit, nahrávat na internet, kopírovat za účelem další distribuce ani poskytovat třetím osobám mimo běžné osobní použití.</p>
+      <p>Kupující může produkt používat pro vlastní přípravu při koupi ojetého vozidla.</p>
+      <p>Všechna autorská práva k produktu náleží prodávajícímu, případně dalším oprávněným osobám.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">13</span><h2>Ochrana osobních údajů</h2></div>
+      <p>Prodávající zpracovává osobní údaje kupujícího za účelem vyřízení objednávky, dodání digitálního produktu, vystavení daňového dokladu, plnění zákonných povinností a případné komunikace se zákazníkem.</p>
+      <p>Podrobnosti o zpracování osobních údajů jsou uvedeny v samostatném dokumentu <a href="osobni-udaje.html" style="color: var(--accent); font-weight: 600;">Zásady zpracování osobních údajů</a>.</p>
+      <p>Kupující bere na vědomí, že pro vyřízení objednávky je nutné zpracování údajů uvedených v objednávkovém formuláři.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">14</span><h2>Mimosoudní řešení sporů</h2></div>
+      <p>V případě spotřebitelského sporu se kupující může obrátit na Českou obchodní inspekci.</p>
+      <p>Česká obchodní inspekce je orgánem mimosoudního řešení spotřebitelských sporů.</p>
+      <p>Webová stránka České obchodní inspekce: <strong>www.coi.cz</strong></p>
+    </div>
+
+    <div class="doc-section">
+      <div class="sec-head"><span class="sec-num">15</span><h2>Závěrečná ustanovení</h2></div>
+      <p>Tyto obchodní podmínky jsou platné ode dne <strong>1. 3. 2026</strong>.</p>
+      <p>Prodávající si vyhrazuje právo obchodní podmínky změnit. Pro kupujícího platí obchodní podmínky účinné v době odeslání objednávky.</p>
+      <p>Právní vztahy neupravené těmito obchodními podmínkami se řídí právním řádem České republiky.</p>
+    </div>
+
+    <div class="callout" style="margin-top: 48px;">
+      <p class="label">Kontakt</p>
+      <p class="text">Zoobanda s.r.o. &nbsp;·&nbsp; IČO: 09542779 &nbsp;·&nbsp; d.balascak@gmail.com</p>
+    </div>
+
+  </div>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="name"><span class="dot"></span> Ojetina bez průšvihu</div>
+        <p>Praktické taháky a návody pro bezpečnější koupi ojetého auta v cenovém pásmu 100–500 tisíc Kč.</p>
+        <p class="footer-contact">Kontakt: <a href="mailto:d.balascak@gmail.com">d.balascak@gmail.com</a></p>
+      </div>
+      <div>
+        <h4>Balíčky</h4>
+        <ul>
+          <li><a href="index.html#produkty">Rychlý tahák — 199 Kč</a></li>
+          <li><a href="index.html#produkty">Tahák + jednání — 349 Kč</a></li>
+          <li><a href="index.html#produkty">Kompletní balíček — 490 Kč</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Informace</h4>
+        <ul>
+          <li><a href="obchodni-podminky.html">Obchodní podmínky</a></li>
+          <li><a href="osobni-udaje.html">Zpracování osobních údajů</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Zoobanda s.r.o. · IČO 09542779 · DIČ CZ09542779</span>
+      <span>Tolarova 886/9, 664 44 Ořechov</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

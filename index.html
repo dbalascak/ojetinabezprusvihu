@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ojetina bez průšvihu — praktické taháky pro nákup ojetého auta</title>
+<meta name="description" content="Kupujete ojeté auto za 100–500 tisíc Kč? Praktické PDF taháky a checklisty, které vám pomůžou nepřijet na prohlídku naslepo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..900,0..100&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #EDE6D6;
+  --bg-soft: #F4EFE2;
+  --ink: #1A1815;
+  --ink-soft: #6B645B;
+  --accent: #B8881A;
+  --accent-dark: #946D14;
+  --hair: #D4CCBA;
+  --white: #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+  background: var(--bg);
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container-narrow {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 { font-family: 'Fraunces', serif; color: var(--ink); }
+
+/* ========== NAV ========== */
+.nav {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--hair);
+  background: var(--bg);
+}
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--ink);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-brand .dot {
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.nav-links {
+  display: flex; gap: 28px;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+.nav-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ========== HERO ========== */
+.hero {
+  padding: 80px 0 64px;
+  text-align: center;
+}
+.hero .label-pill {
+  display: inline-block;
+  border: 1.2px solid var(--accent);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-weight: 700;
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero .lede {
+  font-size: clamp(18px, 2.2vw, 22px);
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+.hero .cta-row {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--accent-dark); }
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 16px 32px;
+  border: 1.5px solid var(--ink);
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.btn-secondary:hover { background: var(--ink); color: var(--white); }
+
+/* ========== SECTION ========== */
+section { padding: 80px 0; border-top: 1px solid var(--hair); }
+
+.section-kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  max-width: 800px;
+}
+.section-lede {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+/* ========== PROBLEM ========== */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 32px;
+}
+@media (max-width: 640px) {
+  .problem-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+.problem-item {
+  padding: 24px 0;
+  border-top: 2px solid var(--accent);
+}
+.problem-item h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.problem-item p {
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* ========== PRODUCTS ========== */
+.products-section { background: var(--bg-soft); }
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+.product-card {
+  background: var(--white);
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  padding: 32px 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.product-card.featured {
+  border: 2px solid var(--accent);
+  box-shadow: 0 8px 24px rgba(184, 136, 26, 0.08);
+}
+.product-card .badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.product-card h3 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.product-card .price {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--accent);
+  margin: 16px 0 8px;
+  letter-spacing: -0.02em;
+}
+.product-card .price-note {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+.product-card .description {
+  font-size: 15px;
+  color: var(--ink);
+  margin-bottom: 20px;
+  line-height: 1.55;
+}
+.product-card ul {
+  list-style: none;
+  margin-bottom: 28px;
+  flex: 1;
+}
+.product-card ul li {
+  font-size: 14px;
+  padding: 6px 0 6px 22px;
+  position: relative;
+  line-height: 1.5;
+}
+.product-card ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+.product-card .btn-primary {
+  text-align: center;
+  width: 100%;
+}
+
+/* ========== FOR-WHOM ========== */
+.for-whom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+@media (max-width: 640px) {
+  .for-whom-grid { grid-template-columns: 1fr; }
+}
+.for-whom-item {
+  padding: 24px;
+  background: var(--bg-soft);
+  border-radius: 12px;
+}
+.for-whom-item h3 {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.for-whom-item p {
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* ========== PULL QUOTE ========== */
+.pull-quote {
+  margin: 64px 0 32px;
+  padding: 32px 0;
+  border-top: 2px solid var(--accent);
+  border-bottom: 1px solid var(--hair);
+  text-align: center;
+}
+.pull-quote .quote-mark {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 80px;
+  line-height: 0.5;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 16px;
+}
+.pull-quote .text {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.3;
+  color: var(--ink);
+  max-width: 720px;
+  margin: 0 auto;
+  letter-spacing: -0.01em;
+}
+
+/* ========== COST ========== */
+.cost-section {
+  background: var(--ink);
+  color: var(--bg);
+}
+.cost-section .section-title { color: var(--bg); }
+.cost-section .section-kicker { color: var(--accent); }
+.cost-section .section-lede { color: var(--bg); }
+.cost-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 32px;
+}
+@media (max-width: 640px) {
+  .cost-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+.cost-item {
+  padding: 24px 0;
+  border-top: 1px solid rgba(212, 204, 186, 0.3);
+}
+.cost-item .num {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2.2vw, 26px);
+  color: var(--accent);
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+.cost-item h3 {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--bg);
+  margin-bottom: 8px;
+}
+.cost-item p {
+  font-size: 15px;
+  color: rgba(237, 230, 214, 0.75);
+}
+
+/* ========== FAQ ========== */
+.faq {
+  margin-top: 32px;
+}
+.faq-item {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--hair);
+}
+.faq-item h3 {
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.faq-item h3::after {
+  content: "+";
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.faq-item.open h3::after { content: "−"; }
+.faq-item p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 720px;
+  display: none;
+}
+.faq-item.open p { display: block; }
+
+/* ========== FINAL CTA ========== */
+.final-cta {
+  text-align: center;
+  padding: 96px 0;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--hair);
+}
+.final-cta h2 {
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 680px;
+  margin: 0 auto 24px;
+}
+.final-cta p {
+  font-size: 18px;
+  color: var(--ink);
+  max-width: 560px;
+  margin: 0 auto 40px;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 64px 0 32px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand .name {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-brand .name .dot {
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.footer-brand p {
+  font-size: 14px;
+  color: rgba(237, 230, 214, 0.7);
+  max-width: 360px;
+  margin-top: 8px;
+}
+.footer-brand .footer-contact {
+  margin-top: 16px;
+  color: rgba(237, 230, 214, 0.85);
+}
+.footer-brand .footer-contact a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.footer-brand .footer-contact a:hover { color: var(--bg); }
+.footer h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.footer ul { list-style: none; }
+.footer ul li {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.footer ul li a {
+  color: rgba(237, 230, 214, 0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer ul li a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid rgba(212, 204, 186, 0.2);
+  padding-top: 24px;
+  font-size: 13px;
+  color: rgba(237, 230, 214, 0.6);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  section { padding: 56px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand"><span class="dot"></span> Ojetina bez průšvihu</a>
+      <ul class="nav-links">
+        <li><a href="#problem">Proč to řešit</a></li>
+        <li><a href="#produkty">Balíčky</a></li>
+        <li><a href="#faq">Otázky</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<header class="hero">
+  <div class="container-narrow">
+    <span class="label-pill">Praktické taháky pro nákup ojetiny</span>
+    <h1>Kupujete ojeté auto za <em>100–500 tisíc Kč?</em></h1>
+    <p class="lede">Než pojedete na prohlídku, pošlete zálohu nebo podepíšete smlouvu, projděte si praktické taháky. Pomůžou vám klást lepší otázky, všimnout si varovných signálů a nejít do rozhodnutí naslepo.</p>
+    <div class="cta-row">
+      <a href="#produkty" class="btn-primary">Vybrat balíček</a>
+      <a href="#problem" class="btn-secondary">Co tahák řeší</a>
+    </div>
+  </div>
+</header>
+
+<!-- ========== PROBLEM ========== -->
+<section id="problem">
+  <div class="container">
+    <p class="section-kicker">Proč to řešit</p>
+    <h2 class="section-title">Špatná koupě ojetiny stojí desítky tisíc — a často začíná u věcí, které šly poznat předem</h2>
+    <p class="section-lede">Hezké fotky, dobrý dojem, časový tlak. Ojetiny se prodávají rychle a kupující nemívají čas ani znalosti všechno ověřit. Tahák vám pomůže projít ty body, na které lidé nejčastěji zapomenou.</p>
+
+    <div class="problem-grid">
+      <div class="problem-item">
+        <h3>Inzerát toho zamlčuje víc, než říká</h3>
+        <p>„Stačí sednout a jezdit", „drobná kosmetika" — formulace, které mohou znamenat hodně peněz po koupi.</p>
+      </div>
+      <div class="problem-item">
+        <h3>Pod tlakem se rozhoduje špatně</h3>
+        <p>„Mám dalšího zájemce, musíte se rozhodnout hned." Bez připraveného postupu se tomu těžko odolává.</p>
+      </div>
+      <div class="problem-item">
+        <h3>Smlouva a přepis nejsou formalita</h3>
+        <p>Nevýhodná formulace ve smlouvě může výrazně zkomplikovat řešení vad a reklamací po koupi.</p>
+      </div>
+      <div class="problem-item">
+        <h3>U elektromobilu jiná rizika</h3>
+        <p>Motor, turbo a spojka nejsou problém. Klíčové je SoH baterie, stav nabíjecí zásuvky a chyby pohonu.</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <span class="quote-mark">"</span>
+      <p class="text">Cílem není odstranit všechna rizika. Cílem je nejít do koupě naslepo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRODUCTS ========== -->
+<section id="produkty" class="products-section">
+  <div class="container">
+    <p class="section-kicker">Balíčky</p>
+    <h2 class="section-title">Vyberte podle toho, kde jste v procesu nákupu</h2>
+    <p class="section-lede">Tři praktické balíčky — od rychlé kontroly před prohlídkou po celý nákupní postup od výběru auta po přepis. Vyšší balíček vždy obsahuje i obsah těch nižších.</p>
+
+    <div class="products-grid">
+
+      <!-- Rychlý tahák 199 -->
+      <div class="product-card">
+        <h3>Rychlý tahák před prohlídkou</h3>
+        <p class="description">Praktická kontrola před cestou a na místě.</p>
+        <p class="price">199 Kč</p>
+        <p class="price-note">včetně DPH · 1 PDF</p>
+        <ul>
+          <li>filtr inzerátu před cestou</li>
+          <li>otázky pro prodávajícího</li>
+          <li>kontrola auta na místě</li>
+          <li>zkušební jízda</li>
+          <li>kdy raději odejít</li>
+          <li>kdy vzít mechanika</li>
+        </ul>
+        <a href="https://form.simpleshop.cz/XgA6q/buy/" class="btn-primary">Koupit za 199 Kč</a>
+      </div>
+
+      <!-- Středn 349 -->
+      <div class="product-card">
+        <h3>Tahák + příprava na jednání</h3>
+        <p class="description">Vše z Rychlého taháku navíc komunikace a vyjednání ceny.</p>
+        <p class="price">349 Kč</p>
+        <p class="price-note">včetně DPH · 2 PDF</p>
+        <ul>
+          <li>vše z Rychlého taháku</li>
+          <li>šablony zpráv pro soukromníka i bazar</li>
+          <li>telefonní scénář</li>
+          <li>zápisník odpovědí</li>
+          <li>vyjednávací tahák</li>
+          <li>reakce na tlakové věty</li>
+        </ul>
+        <a href="https://form.simpleshop.cz/LrjL6/buy/" class="btn-primary">Koupit za 349 Kč</a>
+      </div>
+
+      <!-- Komplet 490 -->
+      <div class="product-card featured">
+        <span class="badge">Nejvýhodnější</span>
+        <h3>Kompletní nákupní balíček</h3>
+        <p class="description">Celý nákup od výběru auta po přepis a první servis.</p>
+        <p class="price">490 Kč</p>
+        <p class="price-note">včetně DPH · 3 PDF</p>
+        <ul>
+          <li>vše z předchozích balíčků</li>
+          <li>rozpočet a rezerva na první servis</li>
+          <li>výběr typu auta + cenová pásma</li>
+          <li>VIN, historie a doklady</li>
+          <li>kupní smlouva a přepis</li>
+          <li>pojištění a co dělat hned po koupi</li>
+        </ul>
+        <a href="https://form.simpleshop.cz/xKAYe/buy/" class="btn-primary">Koupit za 490 Kč</a>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 48px; font-size: 15px; color: var(--ink-soft);">
+      <strong>Rozdíl mezi Rychlým tahákem a Kompletem je 291 Kč.</strong><br>
+      U auta za statisíce malá částka za výrazně lepší přípravu.
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOR WHOM ========== -->
+<section>
+  <div class="container">
+    <p class="section-kicker">Pro koho to je</p>
+    <h2 class="section-title">Pro každého, kdo nechce kupovat auto naslepo</h2>
+
+    <div class="for-whom-grid">
+      <div class="for-whom-item">
+        <h3>Kupujete poprvé nebo po dlouhé pauze</h3>
+        <p>Roky jste řešili stejné auto, teď stojíte před výběrem a chcete se vyhnout nejčastějším chybám.</p>
+      </div>
+      <div class="for-whom-item">
+        <h3>Nejste autoexpert</h3>
+        <p>Nepřišel jste se stát mechanikem. Chcete praktické kroky a otázky, které si zaslouží odpověď.</p>
+      </div>
+      <div class="for-whom-item">
+        <h3>Bojíte se časového tlaku</h3>
+        <p>„Když to nevezmete hned, rezervuju to jinému zájemci." Chcete vědět, jak na tlakové věty reagovat.</p>
+      </div>
+      <div class="for-whom-item">
+        <h3>Zvažujete elektromobil</h3>
+        <p>Víte, že elektromobil má jiná rizika než spalovák — a chcete vědět, na co se zaměřit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COST ========== -->
+<section class="cost-section">
+  <div class="container">
+    <p class="section-kicker">Co může stát špatná koupě</p>
+    <h2 class="section-title">Pár tisíc za přípravu — nebo desetitisíce navíc po koupi</h2>
+    <p class="section-lede">Ojetina za statisíce s sebou nese náklady, které začnou hned po podpisu smlouvy. Tahák vám pomůže je odhadnout dřív, než zaplatíte.</p>
+
+    <div class="cost-grid">
+      <div class="cost-item">
+        <div class="num">15 000 – 40 000 Kč</div>
+        <h3>Nečekaný servis</h3>
+        <p>Rozvody, spojka, brzdy, podvozek — typické položky první půlrok po koupi.</p>
+      </div>
+      <div class="cost-item">
+        <div class="num">8 000 – 25 000 Kč</div>
+        <h3>Pneumatiky a geometrie</h3>
+        <p>Nerovnoměrně sjeté pneumatiky znamenají i problémy s podvozkem.</p>
+      </div>
+      <div class="cost-item">
+        <div class="num">50 000 – 150 000 Kč</div>
+        <h3>Trakční baterie</h3>
+        <p>U elektromobilu nejnákladnější riziko. SoH a chyby nabíjení se ověřit dají.</p>
+      </div>
+      <div class="cost-item">
+        <div class="num">Nevyčíslitelné</div>
+        <h3>Soudní spor o vady</h3>
+        <p>Špatně napsaná smlouva dokáže zkomplikovat reklamaci na měsíce i roky.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section id="faq">
+  <div class="container-narrow">
+    <p class="section-kicker">Časté otázky</p>
+    <h2 class="section-title">Než nakoupíte</h2>
+
+    <div class="faq">
+      <div class="faq-item">
+        <h3>Co když si nejsem jistý, který balíček vybrat?</h3>
+        <p>Pokud máte konkrétní auto a chystáte se na prohlídku za pár dní, vystačí <strong>Rychlý tahák</strong>. Pokud teprve hledáte, srovnáváte a budete jednat o ceně, vezměte si <strong>Tahák + příprava na jednání</strong>. Pokud chcete projít celý proces od výběru po přepis — třeba protože kupujete poprvé nebo po dlouhé pauze — dává největší smysl <strong>Kompletní balíček</strong>.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Co je v PDF a jak dlouhé je?</h3>
+        <p>Rychlý tahák má 10 stran, Tahák s jednáním 15 stran, Kompletní balíček zhruba 40 stran. Žádný „obecný blábol" — konkrétní otázky, checklisty, šablony zpráv, telefonní scénáře. Ukázku formátu si můžete stáhnout zdarma jako lead magnet „7 vět v inzerátu".</p>
+      </div>
+      <div class="faq-item">
+        <h3>Nahradí mi to mechanika?</h3>
+        <p>Ne. Tahák vám pomůže udělat <strong>první filtr</strong> — vyhodit slabé inzeráty, položit lepší otázky a všimnout si varovných signálů. U dražšího auta, nejasné historie nebo elektromobilu doporučujeme mechanika vzít. Tahák vám pomůže rozhodnout, kdy to dává smysl.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Vrácení peněz, pokud nejsem spokojen?</h3>
+        <p>Jde o digitální obsah, který je doručený okamžitě po platbě — proto v souladu se zákonem souhlasíte s vyloučením zákonné lhůty 14 dní na odstoupení. Pokud se setkáte s technickým problémem (neotevírá se PDF, nedorazil odkaz), ozvěte se a vyřešíme to.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Kdo za projektem stojí?</h3>
+        <p>Praktické taháky vznikly z přímé zkušenosti s auty, dopravou a geometrií kol. Cílem je dát laickým kupujícím nástroje, které normálně zná jen mechanik nebo někdo s několika koupěmi ojetin za sebou.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FINAL CTA ========== -->
+<section class="final-cta">
+  <div class="container-narrow">
+    <h2>Nejít do koupě naslepo nestojí ani 500 Kč</h2>
+    <p>Praktické PDF taháky, které vám pomůžou položit lepší otázky, všimnout si varovných signálů a klidně se rozhodnout — i pod tlakem.</p>
+    <a href="#produkty" class="btn-primary">Vybrat balíček</a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="name"><span class="dot"></span> Ojetina bez průšvihu</div>
+        <p>Praktické taháky a návody pro bezpečnější koupi ojetého auta v cenovém pásmu 100–500 tisíc Kč.</p>
+        <p class="footer-contact">Kontakt: <a href="mailto:d.balascak@gmail.com">d.balascak@gmail.com</a></p>
+      </div>
+      <div>
+        <h4>Balíčky</h4>
+        <ul>
+          <li><a href="#produkty">Rychlý tahák — 199 Kč</a></li>
+          <li><a href="#produkty">Tahák + jednání — 349 Kč</a></li>
+          <li><a href="#produkty">Kompletní balíček — 490 Kč</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Informace</h4>
+        <ul>
+          <li><a href="obchodni-podminky.html">Obchodní podmínky</a></li>
+          <li><a href="osobni-udaje.html">Zpracování osobních údajů</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Zoobanda s.r.o. · IČO 09542779 · DIČ CZ09542779</span>
+      <span>Tolarova 886/9, 664 44 Ořechov</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item h3').forEach(h => {
+  h.addEventListener('click', () => {
+    h.parentElement.classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>
